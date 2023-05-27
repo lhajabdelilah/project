@@ -25,7 +25,7 @@
                     <td>{{$l->end_date}}</td>
                     <td>{{$l->car_id}}</td>
                     <td>{{$l->amount}}</td>
-          <td><a href="#" class="btn btn-primary">Modifier</a></td>
+          <td><a  href="{{url('Location/'.$l->id.'/edit')}}"  class="btn btn-primary">Modifier</a></td>
         </tr>
        @endforeach
       </tbody>

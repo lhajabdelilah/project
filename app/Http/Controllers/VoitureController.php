@@ -13,11 +13,8 @@ use Illuminate\Http\UploadedFile;
 
 class VoitureController extends Controller
 {
-
-    public function __construct()
-    {
-        return $this->middleware('AdminMiddleware');
-    }
+   
+   
     public function show($id){
         $listV = Voitures::all();
         foreach($listV as $v){
@@ -78,7 +75,7 @@ class VoitureController extends Controller
         $v->nbp=$req->input('nbp');
         $v->save();
         session()->flash('success', 'la Voiture a etait bien enrigistrer !! ');
-        return redirect('/Voiture');
+    return redirect()->back()->with('success', 'la Voiture a etait bien enrigistrer !! ');
     }
     //recuperer une voitures puis le met dans une formulaire
     public function edit($id)
@@ -146,6 +143,6 @@ class VoitureController extends Controller
         }
 
         $v->delete();
-        return redirect('/Voiture');
+         return redirect()->back()->with('success','the car is deleted ');
     }
 }

@@ -13,8 +13,8 @@
     <div class="form-group">
         <label for="currency">Devise:</label>
         <select name="currency" id="currency" class="form-control" required>
-            <option value="USD">USD</option>
-            <option value="EUR">EUR</option>
+            <option value="USD">MAD</option>
+           
             <!-- Ajoutez d'autres options de devise selon vos besoins -->
         </select>
     </div>
@@ -24,7 +24,7 @@
         <textarea name="description" id="description" class="form-control" required></textarea>
     </div>
 
-    <button type="submit" class="btn btn-primary">Payer avec PayPal</button>
+    <button   href="https://www.paypal.com/myaccount"class="btn btn-primary">Payer avec PayPal</button>
 </form>
 
 	@endsection

@@ -40,7 +40,7 @@
 
             <div class="btn-group">
               <a href="{{url('Voiture/'.$v->id.'/show')}}" class="btn btn-sm btn-outline-secondary  btn btn-primary">View</a>
-              <button type="button" class="btn btn-sm btn-outline-secondary btn btn-primary" > Réserve</button>
+              <a href="{{'/Location/{id}/create'}}" class="btn btn-sm btn-outline-secondary btn btn-primary" > Réserve</a>
             </div>
 
 

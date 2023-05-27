@@ -6,12 +6,17 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use PharIo\Manifest\Author;
 use App\Http\Controllers\admincontroller;
+use App\Http\Controllers\MailController;
 use App\Models\locations;
 use App\Models\marques;
 use App\Models\User;
 use App\Http\Requests\VoitursRequest;
 use Illuminate\Http\Request;
 use App\Http\Controllers\PaypalController;
+use App\Http\Controllers\MessageController;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\Test;
+use App\Models\contacts;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,7 +28,21 @@ use App\Http\Controllers\PaypalController;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::get('/send',function (){
+
+    Mail::to('abdelilahaitlhaj455@gmail.com')->send(new Test());
+
+    return response('sending');
+});
+
+
+
+
+
+
+Route::get('/',[App\Http\Controllers\HomeController::class, 'index']);
+Route::get('home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/Admin/home', [App\Http\Controllers\HomeController::class, 'adminHome'])->name('admin.home')->middleware('AdminMiddleware');
 
 
@@ -36,7 +55,7 @@ Route::get('/pay', [App\Http\Controllers\PaymentController::class, 'index'])->na
 
 Route::get('/', function () {
 
-    $v = Voitures::paginate(3);
+    $v = Voitures::paginate(6);
 
     return view('Home_v', ['voi' => $v]);
 });
@@ -70,6 +89,13 @@ Route::get('/Clients', function () {
 Route::get('/about', function () {
     return view('about');
 });
+Route::get('contacts/show' ,[App\Http\Controllers\ContactsController::class, 'show'] );
+Route::post('contacts/store' ,[App\Http\Controllers\ContactsController::class, 'store'] );
+Route::get('message' ,function(){
+$message= contacts::all();
+return view("messages",['message'=>$message]);
+});
+
 
 
 Route::get('Voiture/create', function(){
@@ -122,11 +148,18 @@ Route::get('Voiture/{id}/show',function($id){
 });
 
 Route::get('Voiture', [App\Http\Controllers\VoitureController::class, 'index']);
-Route::post('Voiture/store', [App\Http\Controllers\VoitureController::class, 'store']);
 Route::get('Voiture/{id}/edit', [App\Http\Controllers\VoitureController::class, 'edit'])->name('editVoiture');
 Route::put('Voiture/{id}/update', [App\Http\Controllers\VoitureController::class, 'update'])->name('udateVoiture');
-Route::delete('/{id}/destroy', [App\Http\Controllers\VoitureController::class, 'destroy'])->name('deleteVoiture');
-Route::post('Voiture/find',  [App\Http\Controllers\VoitureController::class, 'find']);
+Route::delete('Voiture/{id}/destroy', [App\Http\Controllers\VoitureController::class, 'destroy'])->name('deleteVoiture');
+Route::post('Voiture/find', function(Request $request){
+    $searchTerm = $request->input('s');
+    $v = Voitures::where('Marque', 'LIKE',  $searchTerm )->get();
+    if($v == null){
+       return View('n_trouver');
+    }else{
+        return view('Voiture.serch',['voi'=>$v]);
+    }
+});
 
 
 
@@ -146,6 +179,7 @@ Route::get('/Locations', function () {
 });
 Route::get('Location/{id}/create', [App\Http\Controllers\LocationController::class, 'create'])->name('create');
 Route::get('/Location/{id}/store', [App\Http\Controllers\LocationController::class, 'store']);
+Route::get('/Location/{id}/edit', [App\Http\Controllers\LocationController::class, 'edit']);
 Route::get('/Location', [App\Http\Controllers\LocationController::class, 'index']);
 
 
@@ -163,5 +197,9 @@ Route::get('/payment/cancel', [PaypalController::class, 'paymentCancel'])->name(
 
 
 // routes/web.php
+Route::get('messages/reply/{id}', [App\Http\Controllers\MessageController::class, 'replay'])->name('messages.reply');
+Route::delete('messages/delete/{id}', [App\Http\Controllers\MessageController::class, 'delete'])->name('messages.delete');
+Route::get('messages/sendReplay/{id}',[App\Http\Controllers\MessageController::class, 'sendreplay'])->name('messages.sendReplay');
+
 
 

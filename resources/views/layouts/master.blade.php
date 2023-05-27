@@ -2,17 +2,12 @@
 <html lang="en">
 
 <head>
-    <!--
-    /   Multipurpose: Free Template by FreeHTML5.co
-    /   Author: https://freehtml5.co
-    /   Facebook: https://facebook.com/fh5co
-    /   Twitter: https://twitter.com/fh5co
-    -->
+   
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <!-- Document title -->
-    <title>bghit nkri Tonobil </title>
+    <title>IRISI CARS </title>
     <!-- Stylesheets & Fonts -->
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700,700i%7CRajdhani:400,600,700"
@@ -55,8 +50,8 @@
                     
                     <ul class="nav social d-none d-md-flex">
                         <li><a href="https://www.facebook.com" target="_blank"><i class="fa fa-facebook"></i></a></li>
-                        <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
-                        <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                        <li><a href="https://www.google.com"><i class="fa fa-google-plus"></i></a></li>
+                        <li><a href="https://www.twiter.com"><i class="fa fa-twitter"></i></a></li>
                     </ul>
                 </nav>
             </div>
@@ -75,10 +70,10 @@
                     <ul class="navbar-nav">
                         <li class="nav-item"><a class="nav-link" href="{{url('Home_v')}}">Home</a></li>
                         <li class="nav-item"><a class="nav-link" href="{{url('about')}}">About Us</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#">Services</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{{url('/Services')}}">Services</a></li>
                         <li class="nav-item"><a class="nav-link" href="{{url('/Voiture/create')}}">Add Car</a></li>
                         
-                        <li class="nav-item"><a class="nav-link" href="#">Contact Us</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{{url('contacts/show')}}">Contact Us</a></li>
                     </ul>
                     <form class="bg-white search-form" method="post" id="searchform" action="{{'Voiture/find'}}">
                         @csrf
@@ -104,13 +99,13 @@
                         <div class="swiper-wrapper">
                             <div class="swiper-slide slide-content d-flex align-items-center">
                                 <div class="single-slide">
-                                    <h1 data-aos="fade-right" data-aos-delay="200">Kri<br>Tonobila dyalk Daba
+                                    <h1 data-aos="fade-right" data-aos-delay="200">IRISI Cars<br>is the best choice
                                     </h1>
                                 </div>
                             </div>
                             <div class="swiper-slide slide-content d-flex align-items-center">
                                 <div class="single-slide">
-                                    <h1 data-aos="fade-right" data-aos-delay="200">rapidment<br> et facilement
+                                    <h1 data-aos="fade-right" data-aos-delay="200">IRISI Cars<br> in your service Now
                                     </h1>
                                    
                                     
@@ -245,7 +240,7 @@
                             </form>
                             <p>We respect your privacy</p>
                             <ul class="nav social-nav">
-                                <li><a href="https://www.facebook.com/" target="_blank"><i class="fa fa-facebook"></i></a></li>
+                                <li><a href="https://www.facebook.com" target="_blank"><i class="fa fa-facebook"></i></a></li>
                                 <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
                                 <li><a href="#"><i class="fa fa-twitter"></i></a></li>
                                 <li><a href="#"><i class="fa fa-google-plus"></i></a></li>

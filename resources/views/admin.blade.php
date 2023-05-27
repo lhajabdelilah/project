@@ -248,7 +248,7 @@
          
 
           <li class="nav-item">
-            <a href="{{url('/emails')}}" class="nav-link">
+            <a href="{{url('message')}}" class="nav-link">
                 <i class="fas fa-angle-left right"></i>
                 <p>
                     Mailbox
